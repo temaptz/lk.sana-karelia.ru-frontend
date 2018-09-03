@@ -1,0 +1,12 @@
+<ngb-alert type="success"
+           [dismissible]="true"
+           (close)="closeSuccess()"
+            *ngIf="successMessages && successMessages.length > 0">
+    <p *ngFor="let message of successMessages">{{message}}</p>
+</ngb-alert>
+<ngb-alert type="danger"
+           [dismissible]="true"
+           (close)="closeErrors()"
+           *ngIf="errorMessages && errorMessages.length > 0">
+    <p *ngFor="let message of errorMessages">{{message}}</p>
+</ngb-alert>

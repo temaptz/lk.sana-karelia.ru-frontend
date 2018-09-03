@@ -1,0 +1,32 @@
+<div class="table-responsive">
+    <table class="table table-sm table-hover table-bordered">
+        <thead class="thead-default">
+            <tr>
+                <th *ngFor="let cell of tableData.header">
+                    {{cell}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of tableData.body">
+                <td *ngFor="let cell of row">
+                    {{cell | myMoney}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="d-flex">
+    <div class="p-0">
+        <table class="table table-sm table-hover table-bordered">
+            <tbody>
+                <tr *ngFor="let row of tableData.footer">
+                    <td *ngFor="let cell of row">
+                        {{cell | myMoney}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

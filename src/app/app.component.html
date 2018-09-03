@@ -1,0 +1,13 @@
+<div class="{{configService.pageContainerClass}}">
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+
+    <footer>
+        <my-footer></my-footer>
+    </footer>
+</div>
+
+<bootstrap-growl [alertCount]="5" [autoClose]="10000"></bootstrap-growl>
+
+<my-loading></my-loading>

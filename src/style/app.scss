@@ -1,0 +1,89 @@
+// styles in src/style directory are applied to the whole page
+$default_padding       : 10px;
+$default_margin        : 10px;
+$default_border_radius : 5px;
+
+/*
+*   Основной макет
+*/
+body {
+    background-image: url("/img/bg.jpg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-color: #dee4e9;
+    font-size: .9rem;
+}
+.main-component-container {
+    padding: 0 $default_padding $default_padding $default_padding;
+    background-color: #f7f8f9;
+    border-radius: $default_border_radius;
+}
+.main-container:has(my-login) {
+    background-color: red;
+}
+.content {
+    padding: $default_padding;
+    background-color: #fff;
+}
+.disable-scroll {
+    overflow: hidden;
+}
+
+/*
+*   Вкладки
+*/
+.tab-container {
+    padding: $default_padding 0;
+}
+
+
+/*
+*   Хаки бутстрапа
+*/
+.modal-dialog.modal-lg {
+    max-width: 95%;
+}
+.modal-dialog.modal-sm {
+    max-width: 50%;
+}
+@media (max-width: 576px) {
+    .modal-dialog.modal-sm {
+        max-width: 95%;
+        margin: 10px auto;
+    }
+}
+
+/*
+*   Bootstrap-growl
+*/
+bootstrap-growl {
+    z-index: 99999 !important;
+}
+
+
+// Ссылки в названии вкладок
+.nav-item a.nav-link {
+    padding: 0;
+}
+a.router-tab-link {
+    display: block;
+    padding: .5em 1em;
+}
+
+// Ссылки на раскрывающийся контент
+.collapse-link {
+    font-size: .9em;
+    border-bottom: 1px dashed;
+    cursor: pointer;
+}
+
+@media print {
+    @page {
+        margin: 0;
+    }
+
+    div.container {
+        margin: 0;
+        width: 100%;
+    }
+}

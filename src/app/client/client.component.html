@@ -1,0 +1,45 @@
+<div class="main-component-container">
+    <my-header [interface]="'Личный кабинет'"></my-header>
+
+    <div class="content">
+
+        <ngb-tabset>
+            <ngb-tab>
+                <ng-template ngbTabTitle>
+                    <a class="router-tab-link"
+                       [routerLink]="['invoice']">
+                        Счет
+                    </a>
+                </ng-template>
+                <ng-template ngbTabContent></ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle>
+                    <a class="router-tab-link"
+                       [routerLink]="['messages']">
+                        <span class="badge badge-pill badge-success"
+                              *ngIf="messagesService.countUnreadMessages">
+                            {{messagesService.countUnreadMessages}}
+                        </span>
+                        Сообщения
+                    </a>
+                </ng-template>
+                <ng-template ngbTabContent></ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle>
+                    <a class="router-tab-link"
+                       [routerLink]="['settings']">
+                        Настройки
+                    </a>
+                </ng-template>
+                <ng-template ngbTabContent></ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+
+        <div class="tab-container">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</div>

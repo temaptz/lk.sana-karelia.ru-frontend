@@ -1,0 +1,41 @@
+<div class="main-component-container">
+    <my-header [interface]="'Колл-центр'"></my-header>
+
+    <div class="content">
+
+        <div class="d-flex">
+            <div class="p-2">
+                <my-search (search)="changeSearch($event)" (clear)="clearSearch()"></my-search>
+            </div>
+        </div>
+
+        <ngb-tabset (tabChange)="tabChange($event)"
+                    [destroyOnHide]="false">
+            <ngb-tab [id]="'tab-zhek'">
+                <ng-template ngbTabTitle>
+                    <a class="router-tab-link">
+                        ООО 'ЖЭК'
+                    </a>
+                </ng-template>
+                <ng-template ngbTabContent>
+                    <div class="p-2">
+                        <my-call-zhek #callZhekCom></my-call-zhek>
+                    </div>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab [id]="'tab-sana'">
+                <ng-template ngbTabTitle>
+                    <a class="router-tab-link">
+                        Расчетный центр САНА
+                    </a>
+                </ng-template>
+                <ng-template ngbTabContent>
+                    <div class="p-2">
+                        <my-call-sana #callSanaCom></my-call-sana>
+                    </div>
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+
+    </div>
+</div>

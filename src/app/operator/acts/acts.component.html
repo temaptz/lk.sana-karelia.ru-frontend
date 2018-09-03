@@ -1,0 +1,141 @@
+<div class="d-flex">
+    <div class="p-2">
+        <form class="form-inline file-upload"
+              (ngSubmit)="fileUpload()">
+
+            <div class="input-group">
+
+                <input #fileInput
+                       type="file"
+                       accept=".xls"
+                       (change)="fileChange($event)"
+                       class="form-control">
+
+                <span class="input-group-btn">
+                    <button type="submit"
+                            class="btn btn-success">
+                        <i class="fa fa-cloud-upload"></i>
+                        Загрузить
+                    </button>
+
+                </span>
+
+            </div>
+
+            <small class="p-2 text-muted">
+                Акты сверок (не более 50 Мб.)
+            </small>
+
+        </form>
+    </div>
+</div>
+
+<div class="d-flex">
+    <div class="p-2">
+        <ngb-alert type="success"
+                   [dismissible]="true"
+                   *ngIf="oldSiteMessage">
+            <p [innerHTML]="oldSiteMessage"></p>
+        </ngb-alert>
+        <a class="collapse-link"
+           (click)="uploadOldCollapsed = !uploadOldCollapsed"
+           [attr.aria-expanded]="!uploadOldCollapsed"
+           aria-controls="collapseUploadOld">
+            Загрузка актов на старый сайт
+        </a>
+        <a href="http://client.sana-karelia.ru/administrator"
+           target="_blank"
+           style="margin-left: 20px;">
+            [Переход на старый сайт]
+        </a>
+        <div id="collapseUploadOld" [ngbCollapse]="uploadOldCollapsed">
+            <div class="card">
+                <div class="card-block">
+                    <form class="form-inline file-upload"
+                          (ngSubmit)="oldFileUpload()">
+
+                        <div class="input-group">
+                            <input #oldFileInput
+                                   type="file"
+                                   accept=".xls"
+                                   (change)="oldFileChange($event)"
+                                   class="form-control">
+
+                            <span class="input-group-btn">
+                                <button type="submit"
+                                        class="btn btn-default">
+                                    <i class="fa fa-cloud-upload"></i>
+                                    Загрузить
+                                </button>
+                            </span>
+                        </div>
+
+                        <small class="p-2 text-muted">
+                            Загрузка на client.sana-karelia.ru. Акты старой формы.
+                        </small>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<my-alert [successMessages]="successMessages" [errorMessages]="errorMessages"></my-alert>
+
+<div class="d-flex">
+    <div class="p-2">
+        <my-search (search)="search($event)" (clear)="clearSearch()"></my-search>
+    </div>
+</div>
+
+<div class="d-flex">
+    <div class="p-2 table-responsive">
+        <table class="table table-sm table-hover table-bordered"
+               *ngIf="actsData">
+            <thead class="thead-default">
+            <tr>
+                <th>Дата оплаты</th>
+                <th>Дата отчета</th>
+                <th>Л/с</th>
+                <th>Договор</th>
+                <th>Курс</th>
+                <th>ФИО</th>
+                <th>Статус</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let act of actsData">
+                <td>{{act.last_payment | date: 'dd.MM.yyyy'}}</td>
+                <td>{{act.period_to | date: 'dd.MM.yyyy'}}</td>
+                <td>{{act.account}}</td>
+                <td>{{act.contract}}</td>
+                <td>{{act.act_data.rate}}</td>
+                <td>{{act.name}}</td>
+                <td>{{act.status}}</td>
+                <td>
+                    <div class="btn-group"
+                         role="group"
+                         aria-label="Действия для акта">
+                        <button class="btn btn-info btn-sm"
+                                ngbTooltip="Посмотреть акт"
+                                container="body"
+                                (click)="viewAct(act.id)">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn btn-danger btn-sm"
+                                ngbTooltip="Удалить акт"
+                                container="body"
+                                (click)="deleteAct(act.id)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template ngbModalContainer></ng-template>

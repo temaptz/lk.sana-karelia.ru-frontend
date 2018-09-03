@@ -1,0 +1,56 @@
+<div class="d-flex">
+    <div class="p-0">
+        <table class="table table-sm table-hover table-bordered">
+            <tbody>
+                <tr>
+                    <td>Договор</td>
+                    <td>{{actData.number}}</td>
+                </tr>
+                <tr>
+                    <td>Покупатель</td>
+                    <td>{{actData.name}}</td>
+                </tr>
+                <tr>
+                    <td>Период</td>
+                    <td>{{actData.period_from | date: 'dd.MM.yyyy'}} - {{actData.period_to | date: 'dd.MM.yyyy'}}</td>
+                </tr>
+                <tr>
+                    <td>Процентная ставка (годовых)</td>
+                    <td>{{actData.rate}}</td>
+                </tr>
+                <tr>
+                    <td>Плановый платеж, у.е. / руб.</td>
+                    <td>{{actData.plan_ue | myMoney}} / {{actData.plan_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Всего уплачено за указанный период, у.е. / руб.</td>
+                    <td>{{actData.fact_ue | myMoney}}
+                        <span *ngIf="actData.fact_rub !== null">/</span>
+                        {{actData.fact_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Курс текущего месяца, руб. за у.е.</td>
+                    <td>{{actData.kurs}}</td>
+                </tr>
+                <tr>
+                    <td>Просроч. задолженность (+); Переплата (-), у.е. / руб.</td>
+                    <td>{{actData.debt_ue | myMoney}} / {{actData.debt_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Предельное значение просроченной задолженности, у.е. / руб.</td>
+                    <td>{{actData.max_debt_ue | myMoney}}
+                        <span *ngIf="actData.max_debt_rub !== null">/</span>
+                        {{actData.max_debt_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Итого к оплате, руб.</td>
+                    <td>{{actData.total_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Основной долг +%%, руб.</td>
+                    <td>{{actData.total_debt | myMoney}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

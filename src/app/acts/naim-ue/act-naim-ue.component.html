@@ -1,0 +1,56 @@
+<div class="d-flex">
+    <div class="p-0">
+        <table class="table table-sm table-hover table-bordered">
+            <tbody>
+                <tr>
+                    <td>Договор</td>
+                    <td>{{actData.number}}</td>
+                </tr>
+                <tr>
+                    <td>Контрагент</td>
+                    <td>{{actData.name}}</td>
+                </tr>
+                <tr>
+                    <td>Период</td>
+                    <td>{{actData.period_from | date: 'dd.MM.yyyy'}} - {{actData.period_to | date: 'dd.MM.yyyy'}}</td>
+                </tr>
+                <tr>
+                    <td>Стоимость квартиры, руб.</td>
+                    <td>{{actData.flat_cost}}</td>
+                </tr>
+                <tr>
+                    <td>МДП в месяц, у.е. / руб. в т.ч.</td>
+                    <td>{{actData.mdp_ue | myMoney}} / {{actData.mdp_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>За использование кв. в месяц, у.е. / руб.</td>
+                    <td>{{actData.flat_usage_ue | myMoney}} / {{actData.flat_usage_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Всего уплачено за указанный период, у.е. / руб.</td>
+                    <td>{{actData.fact_ue | myMoney}} / {{actData.fact_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Всего уплачено в счет выкупа, у.е. / руб.</td>
+                    <td>{{actData.ransom_fact_ue | myMoney}} / {{actData.ransom_fact_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Курс текущего месяца, руб. за у.е.</td>
+                    <td>{{actData.kurs}}</td>
+                </tr>
+                <tr>
+                    <td>Всего просроченная задолженность, у.е. / руб.</td>
+                    <td>{{actData.debt_ue | myMoney}} / {{actData.debt_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Итого к оплате, руб.</td>
+                    <td>{{actData.total_rub | myMoney}}</td>
+                </tr>
+                <!--<tr>-->
+                    <!--<td>Бонусы</td>-->
+                    <!--<td>{{actData.bonus}}</td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>

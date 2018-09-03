@@ -1,0 +1,30 @@
+<div class="main-component-container">
+    <my-header [interface]="'Прямой доступ к личному кабинету'"></my-header>
+
+    <div class="content">
+
+        <ngb-tabset>
+            <ngb-tab>
+                <ng-template ngbTabTitle>
+                    <a class="router-tab-link">
+                        Счет
+                    </a>
+                </ng-template>
+                <ng-template ngbTabContent>
+                    <my-invoice></my-invoice>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle>
+                    <a class="router-tab-link">
+                        Сообщения
+                    </a>
+                </ng-template>
+                <ng-template ngbTabContent>
+                    <my-messages></my-messages>
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+
+    </div>
+</div>

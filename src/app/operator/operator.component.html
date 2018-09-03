@@ -1,0 +1,41 @@
+<div class="main-component-container">
+    <my-header [interface]="'Оператор'"></my-header>
+
+    <div class="content">
+
+        <ngb-tabset>
+            <ngb-tab>
+                <ng-template ngbTabTitle>
+                    <a class="router-tab-link"
+                       [routerLink]="['acts']">
+                        Акты
+                    </a>
+                </ng-template>
+                <ng-template ngbTabContent></ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle>
+                    <a class="router-tab-link"
+                       [routerLink]="['contracts']">
+                        Регистр сведений
+                    </a>
+                </ng-template>
+                <ng-template ngbTabContent></ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle>
+                    <a class="router-tab-link"
+                       [routerLink]="['messages']">
+                        Сообщения
+                    </a>
+                </ng-template>
+                <ng-template ngbTabContent></ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+
+        <div class="tab-container">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</div>

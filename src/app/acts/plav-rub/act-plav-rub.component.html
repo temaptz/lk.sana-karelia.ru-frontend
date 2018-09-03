@@ -1,0 +1,48 @@
+<div class="d-flex">
+    <div class="p-0">
+        <table class="table table-sm table-hover table-bordered">
+            <tbody>
+                <tr>
+                    <td>Договор</td>
+                    <td>{{actData.number}}</td>
+                </tr>
+                <tr>
+                    <td>Покупатель</td>
+                    <td>{{actData.name}}</td>
+                </tr>
+                <tr>
+                    <td>Период</td>
+                    <td>{{actData.period_from | date: 'dd.MM.yyyy'}} - {{actData.period_to | date: 'dd.MM.yyyy'}}</td>
+                </tr>
+                <tr>
+                    <td>Предельная процентная ставка,%% в год</td>
+                    <td>{{actData.max_rate}}</td>
+                </tr>
+                <tr>
+                    <td>Плановый платеж, руб.</td>
+                    <td>{{actData.plan_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Всего уплачено за указанный период, руб.</td>
+                    <td>{{actData.fact_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Просроченная задолженность, руб.</td>
+                    <td>{{actData.debt_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Предельное значение просроченной задолженности, руб.</td>
+                    <td>{{actData.max_debt_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Итого к оплате, руб.</td>
+                    <td>{{actData.total_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Основной долг +%%, руб.</td>
+                    <td>{{actData.total_debt | myMoney}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

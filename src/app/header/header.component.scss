@@ -1,0 +1,46 @@
+// component styles are encapsulated and only applied to their components
+$default_padding      : 10px;
+$header-inside-height : 40px;
+
+.header {
+  padding: $default_padding 0;
+}
+.logo {
+  margin: 0;
+  font-size: 1em;
+  color: #025aa5;
+  line-height: $header-inside-height;
+}
+.logo img {
+  max-height: $header-inside-height;
+}
+.interface-name {
+  margin: 0;
+  line-height: $header-inside-height;
+  text-align: center;
+}
+.user-info {
+  margin: 0;
+  font-size: .9em;
+  line-height: $header-inside-height;
+  text-align: right;
+}
+.user-name {}
+.clickable {
+  cursor: pointer;
+}
+.logo span,
+.interface-name {
+  white-space: nowrap;
+}
+
+//@media print {
+//
+//  .interface-name {
+//    font-size: 32px;
+//  }
+//
+//  .logo {
+//    color: #f0f !important;
+//  }
+//}

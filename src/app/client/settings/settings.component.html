@@ -1,0 +1,84 @@
+<button class="btn btn-primary"
+        (click)="openChangePasswordModal(modalContent)">
+    <i class="fa fa-key"></i>
+    Сменить пароль
+</button>
+
+<ng-template ngbModalContainer></ng-template>
+
+<ng-template #modalContent let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Смена пароля</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="change-password-current"
+                       class="control-label">
+                    Введите старый пароль:
+                </label>
+                <input type="password"
+                       class="form-control"
+                       id="change-password-current"
+                       placeholder="Старый пароль"
+                       [(ngModel)]="passwordCurrent"
+                       name="password"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="change-password-one"
+                       class="control-label">
+                    Новый пароль:
+                </label>
+                <input type="password"
+                       class="form-control"
+                       id="change-password-one"
+                       placeholder="Новый пароль"
+                       [(ngModel)]="passwordNew"
+                       name="password"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="change-password-two"
+                       class="control-label">
+                    Повторите новый пароль:
+                </label>
+                <input type="password"
+                       class="form-control"
+                       id="change-password-two"
+                       placeholder="Новый пароль еще раз"
+                       [(ngModel)]="passwordNewConfirm"
+                       name="password"
+                       required>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary"
+                type="button"
+                (click)="d()">
+            Закрыть
+        </button>
+
+        <button class="btn btn-primary"
+                type="submit"
+                [disabled]="
+                    !passwordCurrent
+                    || !passwordNew
+                    || !passwordNewConfirm
+                    || passwordCurrent.length == 0
+                    || passwordNew.length == 0
+                    || passwordNewConfirm.length == 0
+                    || passwordNew != passwordNewConfirm
+                    || passwordCurrent == passwordNew"
+                (click)="c(true)">
+            <i class="fa fa-save"></i>
+            Сохранить
+        </button>
+    </div>
+</ng-template>

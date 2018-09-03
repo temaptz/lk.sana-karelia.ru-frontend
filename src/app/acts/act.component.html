@@ -1,0 +1,23 @@
+<my-act-mdp-rub [actData]="actData.act_data"
+                *ngIf="actData.type == 'mdp_rub'"></my-act-mdp-rub>
+
+<my-act-mdp-ue [actData]="actData.act_data"
+                *ngIf="actData.type == 'mdp_ue'"></my-act-mdp-ue>
+
+<my-act-uep-rub [actData]="actData.act_data"
+                *ngIf="actData.type == 'uep_rub'"></my-act-uep-rub>
+
+<my-act-uep-ue [actData]="actData.act_data"
+               *ngIf="actData.type == 'uep_ue'"></my-act-uep-ue>
+
+<my-act-naim-rub [actData]="actData.act_data"
+                *ngIf="actData.type == 'naim_rub'"></my-act-naim-rub>
+
+<my-act-naim-ue [actData]="actData.act_data"
+               *ngIf="actData.type == 'naim_ue'"></my-act-naim-ue>
+
+<my-act-plav-rub [actData]="actData.act_data"
+                 *ngIf="actData.type == 'plav_rub'"></my-act-plav-rub>
+
+
+<my-act-main-table [tableData]="actData.table_data"></my-act-main-table>

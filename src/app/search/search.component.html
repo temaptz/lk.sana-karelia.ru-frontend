@@ -1,0 +1,27 @@
+<form (submit)="onSearch()"
+      autocomplete="on">
+    <div class="input-group">
+        <input type="text"
+               class="form-control"
+               placeholder="Поисковый запрос..."
+               name="search"
+               [(ngModel)]="text"
+               autocomplete="on">
+
+        <span class="input-group-btn">
+            <button class="btn btn-secondary"
+                    type="button"
+                    (click)="onClear()">
+                <i class="fa fa-times"></i>
+            </button>
+        </span>
+
+        <span class="input-group-btn">
+            <button class="btn btn-primary"
+                    type="submit">
+                <i class="fa fa-search"></i>
+                Поиск
+            </button>
+        </span>
+    </div>
+</form>

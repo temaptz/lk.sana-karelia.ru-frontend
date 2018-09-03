@@ -1,0 +1,54 @@
+<div class="d-flex"
+     *ngIf="messages">
+    <div class="p-2 table-responsive">
+        <table class="table table-sm table-hover table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>Статус</th>
+                    <th>Тема</th>
+                    <th>Дата</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let m of messages">
+                    <td>
+                        <h6>
+                            <span class="badge"
+                                  [class.badge-success]="m.status == 'Не прочитано'"
+                                  [class.badge-default]="m.status == 'Прочитано'">
+                                {{m.status}}
+                            </span>
+                        </h6>
+                    </td>
+                    <td>{{m.subject}}</td>
+                    <td>{{m.date_create | date: 'dd.MM.yyyy hh:mm'}}</td>
+                    <td>
+                        <div class="btn-group"
+                             role="group"
+                             aria-label="Действия для сообщения">
+                            <button class="btn btn-info btn-sm"
+                                    title="Посмотреть"
+                                    (click)="viewMessage(m.id)">
+                                <i class="fa fa-eye"></i>
+                                Просмотр
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #message let-c="close">
+    <div class="modal-header">
+        <h4 class="modal-title">Сообщение</h4>
+        <button type="button" class="close" aria-label="Close" (click)="c()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <my-message [id]="messageId" [setAsRead]="true"></my-message>
+    </div>
+</ng-template>

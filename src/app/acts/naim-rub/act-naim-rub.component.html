@@ -1,0 +1,52 @@
+<div class="d-flex">
+    <div class="p-0">
+        <table class="table table-sm table-hover table-bordered">
+            <tbody>
+                <tr>
+                    <td>Договор</td>
+                    <td>{{actData.number}}</td>
+                </tr>
+                <tr>
+                    <td>Контрагент</td>
+                    <td>{{actData.name}}</td>
+                </tr>
+                <tr>
+                    <td>Период</td>
+                    <td>{{actData.period_from | date: 'dd.MM.yyyy'}} - {{actData.period_to | date: 'dd.MM.yyyy'}}</td>
+                </tr>
+                <tr>
+                    <td>Стоимость квартиры, руб.</td>
+                    <td>{{actData.flat_cost}}</td>
+                </tr>
+                <tr>
+                    <td>МДП в месяц, руб. в т.ч.</td>
+                    <td>{{actData.mdp_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>За использование кв. в месяц, руб.</td>
+                    <td>{{actData.flat_usage_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Всего уплачено за указанный период, руб.</td>
+                    <td>{{actData.fact_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Всего уплачено в счет выкупа, руб.</td>
+                    <td>{{actData.ransom_fact_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Всего просроченная задолженность, руб.</td>
+                    <td>{{actData.debt_rub | myMoney}}</td>
+                </tr>
+                <tr>
+                    <td>Итого к оплате, руб.</td>
+                    <td>{{actData.total_rub | myMoney}}</td>
+                </tr>
+                <!--<tr>-->
+                    <!--<td>Бонусы</td>-->
+                    <!--<td>{{actData.bonus}}</td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>

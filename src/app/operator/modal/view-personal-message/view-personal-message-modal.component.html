@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4 class="modal-title">Просмотр сообщения</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <table class="table table-sm table-hover table-bordered">
+        <tbody>
+            <tr>
+                <td>Кому:</td>
+                <td>{{message.to_user_name}}</td>
+            </tr>
+            <tr>
+                <td>Статус:</td>
+                <td>{{message.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <my-message [id]="message.id"></my-message>
+</div>

@@ -1,0 +1,72 @@
+<div class="d-flex">
+    <div class="p-2">
+        <button class="btn btn-success"
+                (click)="createUser()">
+            <i class="fa fa-file"></i>
+            Создать пользователя
+        </button>
+    </div>
+</div>
+
+<div class="d-flex">
+    <div class="p-2">
+        <select class="custom-select"
+                [(ngModel)]="selectedRole"
+                (change)="changeFilter()">
+            <option value="all">Все</option>
+            <option *ngFor="let r of roles"
+                    value="{{r.role_key}}">
+                {{r.name}}
+            </option>
+        </select>
+    </div>
+
+    <div class="p-2">
+        <my-search (search)="changeFilter($event)" (clear)="clearFilter()"></my-search>
+    </div>
+</div>
+
+<div class="d-flex"
+     *ngIf="users">
+    <div class="p-2 table-responsive">
+        <table class="table table-sm table-hover table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>Логин</th>
+                    <th>ФИО</th>
+                    <th>Роль</th>
+                    <th>Дата регистрации</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of users">
+                    <td>{{u.login}}</td>
+                    <td>{{u.name}}</td>
+                    <td>{{u.role}}</td>
+                    <td>{{u.date_create | date: 'dd.MM.yyyy'}}</td>
+                    <td>
+                        <div class="btn-group"
+                             role="group"
+                             aria-label="Действия для пользователя">
+                            <button class="btn btn-default btn-sm"
+                                    ngbTooltip="Редактировать пользователя"
+                                    container="body"
+                                    (click)="editUser(u.id)">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm"
+                                    ngbTooltip="Удалить пользователя"
+                                    container="body"
+                                    (click)="deleteUser(u.id)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template ngbModalContainer></ng-template>

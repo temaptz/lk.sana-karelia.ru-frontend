@@ -1,0 +1,26 @@
+<div class="d-flex" *ngIf="message">
+    <div class="p-2">
+        <p class="date">{{message.date_create | date: 'dd.MM.yyyy HH:mm'}}</p>
+        <h3>{{message.subject}}</h3>
+        <p class="text">{{message.text}}</p>
+
+        <div class="d-flex"
+             *ngIf="message.file_hash">
+            <div class="p-0">
+                <div class="card">
+                    <div class="card-block">
+                        <h5 class="card-title">Прикрепленный файл:</h5>
+                        <p class="card-text">{{message.file_name}}</p>
+                        <a href="{{message.file_url}}"
+                           class="btn btn-primary"
+                           download>
+                            <i class="fa fa-cloud-download"></i>
+                            Скачать
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

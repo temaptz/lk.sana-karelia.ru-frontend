@@ -1,0 +1,25 @@
+:host {
+  font-size: .9rem;
+  line-height: 1.2;
+}
+
+/deep/ my-act-main-table {
+  font-size: .65rem;
+  line-height: 1.2;
+}
+
+@media print {
+  :host {
+    font-size: .8rem;
+    line-height: 1;
+  }
+
+  /deep/ my-act-main-table {
+    font-size: .6rem;
+    line-height: 1;
+  }
+
+  /deep/ my-act-main-table .table th, /deep/ my-act-main-table .table td {
+    padding: .1rem;
+  }
+}

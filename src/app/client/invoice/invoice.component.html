@@ -1,0 +1,47 @@
+<my-update-base-message></my-update-base-message>
+<div class="d-flex flex-row">
+    <div class="p-2">
+        <div class="btn-group time-period-change"
+             role="group"
+             aria-label="Временной период">
+            <button type="button"
+                    class="btn"
+                    [class.active]="currentView === '3m'"
+                    [class.btn-primary]="currentView === '3m'"
+                    [class.btn-secondary]="currentView !== '3m'"
+                    (click)="setView('3m')">
+                Три месяца
+            </button>
+            <button type="button"
+                    class="btn"
+                    [class.active]="currentView === 'y'"
+                    [class.btn-primary]="currentView === 'y'"
+                    [class.btn-secondary]="currentView !== 'y'"
+                    (click)="setView('y')">
+                Год
+            </button>
+            <button type="button"
+                    class="btn"
+                    [class.active]="currentView === 'all'"
+                    [class.btn-primary]="currentView === 'all'"
+                    [class.btn-secondary]="currentView !== 'all'"
+                    (click)="setView('all')">
+                Вся история
+            </button>
+        </div>
+    </div>
+
+    <div class="p-2 ml-auto">
+        <button type="button"
+                class="btn btn-primary"
+                (click)="printPage()">
+            <i class="fa fa-print"></i>
+            Печать
+        </button>
+    </div>
+</div>
+
+<div class="table-responsive"
+     *ngIf="actData">
+    <my-act [actData]="actData"></my-act>
+</div>

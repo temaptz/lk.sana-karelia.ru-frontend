@@ -1,0 +1,31 @@
+<div class="d-flex">
+    <div class="p-2">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button"
+                    class="btn btn-secondary"
+                    [class.active]="currentView == 'personal'"
+                    (click)="setView('personal')">
+                Личные сообщения
+            </button>
+            <button type="button"
+                    class="btn btn-secondary"
+                    [class.active]="currentView == 'sms'"
+                    (click)="setView('sms')">
+                СМС
+            </button>
+            <button type="button"
+                    class="btn btn-secondary"
+                    [class.active]="currentView == 'birthday'"
+                    (click)="setView('birthday')">
+                Поздравительные
+            </button>
+        </div>
+    </div>
+</div>
+<div class="d-flex">
+    <div class="p-0">
+        <my-operator-messages-personal *ngIf="currentView == 'personal'"></my-operator-messages-personal>
+        <my-operator-messages-sms *ngIf="currentView == 'sms'"></my-operator-messages-sms>
+        <my-operator-messages-birthday *ngIf="currentView == 'birthday'"></my-operator-messages-birthday>
+    </div>
+</div>

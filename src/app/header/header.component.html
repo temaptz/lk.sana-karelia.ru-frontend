@@ -1,0 +1,47 @@
+<div class="header">
+    <div class="d-flex justify-content-between">
+        <div class="p-2">
+            <h1 class="logo">
+                <img src="/img/logo.png" alt="САНА">
+                <span>Расчетно - сервисный центр</span>
+            </h1>
+        </div>
+
+        <div class="p-2">
+            <span class="interface-name"
+                  *ngIf="availableInterfaces.length === 0">
+                {{interface}}
+            </span>
+
+            <span ngbDropdown
+                  *ngIf="availableInterfaces.length !== 0">
+                <span class="interface-name clickable"
+                      id="dropdownInterface"
+                      ngbDropdownToggle>
+                    {{interface}}
+                </span>
+                <div class="dropdown-menu"
+                     aria-labelledby="dropdownInterface">
+                    <button class="dropdown-item"
+                            *ngFor="let interface of availableInterfaces"
+                            (click)="changeInterface(interface.key)">
+                        {{interface.name}}
+                    </button>
+                </div>
+            </span>
+
+        </div>
+
+        <div class="p-2">
+            <p class="user-info">
+                <span>Здравствуйте,</span>
+                <span class="user-name">{{authService.name}}</span>
+                <button class="btn btn-secondary btn-sm"
+                        (click)="authService.logout()">
+                    <i class="fa fa-sign-out"></i>
+                    Выйти
+                </button>
+            </p>
+        </div>
+    </div>
+</div>

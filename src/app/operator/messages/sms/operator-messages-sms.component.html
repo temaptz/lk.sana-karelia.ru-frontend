@@ -1,0 +1,115 @@
+<div class="d-flex">
+    <div class="p-2">
+        <select class="custom-select"
+                [(ngModel)]="filterStatus"
+                (change)="changeFilter()">
+            <option selected disabled>Выбор состояния</option>
+            <option value="all">Все</option>
+            <option value="unsend">Не отправленные</option>
+            <option value="send">Отправленные</option>
+            <option value="deleted">Удаленные</option>
+        </select>
+    </div>
+
+    <div class="p-2">
+        <my-search (search)="changeFilter($event)" (clear)="clearFilter()"></my-search>
+    </div>
+</div>
+
+<div class="d-flex"
+     *ngIf="messages">
+    <div class="p-2 table-responsive">
+        <table class="table table-sm table-hover table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox"
+                                       class="form-check-input"
+                                       [(ngModel)]="selectAll"
+                                       (change)="toggleSelectAll()">
+                            </label>
+                        </div>
+                    </th>
+                    <th>Дата акта</th>
+                    <th>Договор</th>
+                    <th>Телефон</th>
+                    <th>Сумма</th>
+                    <th>Статус</th>
+                    <th>Дата отправки</th>
+                    <th>Текст</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let m of messages">
+                    <td>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox"
+                                       class="form-check-input"
+                                       [(ngModel)]="m.selected">
+                            </label>
+                        </div>
+                    </td>
+                    <td>{{m.date_act | date: 'dd.MM.yyyy'}}</td>
+                    <td>{{m.contract}}</td>
+                    <td>{{m.phone}}</td>
+                    <td>{{m.summ | myMoney}}</td>
+                    <td>{{m.status}}</td>
+                    <td>{{m.date_send | date: 'dd.MM.yyyy HH:mm'}}</td>
+                    <td>{{m.text}}</td>
+                    <td>
+                        <div class="btn-group"
+                             role="group"
+                             aria-label="Действия для сообщения">
+                            <button class="btn btn-success btn-sm"
+                                    ngbTooltip="Отправить сообщение"
+                                    container="body"
+                                    (click)="sendMessages(m.id)"
+                                    [disabled]="m.status == 'Отправлено' || !m.phone || filterStatus == 'deleted'">
+                                <i class="fa fa-paper-plane"></i>
+                            </button>
+                            <button class="btn btn-info btn-sm"
+                                    ngbTooltip="Посмотреть акт"
+                                    container="body"
+                                    (click)="viewAct(m.act_id)">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm"
+                                    ngbTooltip="Удалить соощение"
+                                    container="body"
+                                    (click)="deleteMessages(m.id)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="d-flex">
+    <div class="p-2">
+        <div class="btn-group"
+             role="group"
+             aria-label="Действия с выбранными">
+            <button type="button"
+                    class="btn btn-success"
+                    (click)="sendMessages()">
+                <i class="fa fa-paper-plane"></i>
+                Отправить выбранные
+            </button>
+            <button type="button"
+                    class="btn btn-danger"
+                    (click)="deleteMessages()">
+                <i class="fa fa-trash"></i>
+                Удалить выбранные
+            </button>
+        </div>
+    </div>
+</div>
+
+<ng-template ngbModalContainer></ng-template>
